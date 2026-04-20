@@ -1,9 +1,27 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --color-wh-orange: #F89B24;
+  --color-wh-blue: #1a56c4;
+  --color-wh-navy: #21274E;
+  --color-wh-light-blue: #A6C3E6;
+  --color-wh-grey: #6D6E71;
+  --color-wh-tesla-grey: #A7A9AC;
 }
 
-body {
-  background-color: #f0f7ff;
+@layer base {
+  * {
+    @apply transition-colors duration-300;
+  }
+
+  body {
+    background-color: #f0f7ff;
+  }
+
+  .dark body {
+    background-color: #0f1215;
+  }
 }
