@@ -130,9 +130,7 @@ export default function App() {
   const [showSplash, setShowSplash] = useState(true);
   const [isDarkMode, setIsDarkMode] = useState(() => {
     try {
-      const saved = localStorage.getItem('wh-theme');
-      if (saved) return saved === 'dark';
-      return window.matchMedia('(prefers-color-scheme: dark)').matches;
+      return localStorage.getItem('wh-theme') === 'dark';
     } catch (e) {
       return false;
     }
