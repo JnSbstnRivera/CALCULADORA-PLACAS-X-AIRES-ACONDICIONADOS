@@ -571,10 +571,41 @@ export default function App() {
         </div>
       </main>
 
-      <footer className="max-w-6xl mx-auto px-4 mt-16 text-center pb-12">
-        <p className="font-bold text-slate-800 dark:text-[#e8eaed] text-base uppercase tracking-wide">Equipo de Análisis y Desarrollo</p>
-        <p className="text-blue-600 dark:text-blue-400 text-xs font-bold uppercase tracking-widest mb-1">Call Center · Windmar Home</p>
-        <p className="text-slate-400 dark:text-[#a0a4ad] text-[10px] font-medium">Puerto Rico</p>
+      <footer className="max-w-6xl mx-auto px-4 mt-16 pb-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-8 border-t border-slate-200 dark:border-white/[0.08]">
+          <div className="flex gap-4">
+            <div className="bg-orange-400/10 p-3 rounded-xl h-fit">
+              <Sun className="text-orange-400" size={24} />
+            </div>
+            <div>
+              <h4 className="font-bold text-slate-900 dark:text-[#e8eaed] text-sm mb-1">Paneles QCells</h4>
+              <p className="text-slate-600 dark:text-[#a0a4ad] text-xs leading-relaxed">Placas de alto rendimiento certificadas para el clima tropical de Puerto Rico.</p>
+            </div>
+          </div>
+          <div className="flex gap-4">
+            <div className="bg-blue-600/10 p-3 rounded-xl h-fit">
+              <Zap className="text-blue-600" size={24} />
+            </div>
+            <div>
+              <h4 className="font-bold text-slate-900 dark:text-[#e8eaed] text-sm mb-1">Cálculo para Aires</h4>
+              <p className="text-slate-600 dark:text-[#a0a4ad] text-xs leading-relaxed">Dimensionamiento preciso de paneles según la capacidad BTU de tus equipos de aire acondicionado.</p>
+            </div>
+          </div>
+          <div className="flex gap-4">
+            <div className="bg-emerald-600/10 p-3 rounded-xl h-fit">
+              <BatteryCharging className="text-emerald-600" size={24} />
+            </div>
+            <div>
+              <h4 className="font-bold text-slate-900 dark:text-[#e8eaed] text-sm mb-1">Sistema Eficiente</h4>
+              <p className="text-slate-600 dark:text-[#a0a4ad] text-xs leading-relaxed">Tecnología inverter para máxima eficiencia y menor consumo energético diario.</p>
+            </div>
+          </div>
+        </div>
+        <div className="text-center pt-8 pb-4">
+          <p className="text-[10px] font-black text-slate-400 dark:text-[#6b7280] uppercase tracking-[0.3em]">
+            © 2026 Equipo de Análisis y Desarrollo — Call Center Windmar Home
+          </p>
+        </div>
       </footer>
 
       <style>{`
