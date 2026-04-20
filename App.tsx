@@ -86,7 +86,7 @@ const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
         transition={{ delay: 0.35, duration: 0.5 }}
         className="text-center px-6"
       >
-        <h1 className="text-3xl font-black tracking-tighter text-white mb-2">SOLAR ADVISOR PRO ⚡</h1>
+        <h1 className="text-3xl font-black tracking-tighter text-white mb-2">¿Cuántas placas para mis aires? ❄️</h1>
         <motion.div
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
@@ -94,7 +94,7 @@ const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
           className="h-0.5 w-24 bg-orange-400 mx-auto rounded-full mb-3"
         />
         <p className="text-blue-200 text-xs font-semibold uppercase tracking-widest opacity-80">
-          Calculadora de Placas · Aires Acondicionados
+          Calculadora Solar · Windmar Home
         </p>
       </motion.div>
 
@@ -248,7 +248,7 @@ export default function App() {
                 />
               </div>
               <div>
-                <h1 className="text-2xl font-black tracking-tight leading-none mb-1">SOLAR ADVISOR PRO ⚡</h1>
+                <h1 className="text-2xl font-black tracking-tight leading-none mb-1">Calculadora de Placas para Aires ❄️</h1>
                 <p className="text-blue-100 text-xs font-semibold uppercase tracking-widest opacity-80">Windmar Home | Puerto Rico</p>
               </div>
             </div>
