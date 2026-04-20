@@ -385,8 +385,8 @@ export default function App() {
           </div>
         )}
 
-        {/* 2 tarjetas — se eliminó Crédito LUMA */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        {/* 2 tarjetas */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
           <SummaryCard
             title="Carga Diaria"
             value={`${totals.totalKwh.toFixed(1)} kWh`}
@@ -407,72 +407,78 @@ export default function App() {
 
             {/* Unidades de aire */}
             <div className="bg-white dark:bg-[#161b22] rounded-3xl shadow-sm border border-slate-100 dark:border-white/[0.08] p-8">
-              <div className="flex justify-between items-center mb-8">
+              <div className="flex flex-wrap justify-between items-center gap-4 mb-6">
                 <div>
                   <h2 className="text-xl font-bold text-slate-800 dark:text-[#e8eaed]">Unidades de Aire</h2>
                   <p className="text-xs text-slate-400 dark:text-[#a0a4ad] font-medium">Inventario de equipos</p>
                 </div>
                 <button
                   onClick={addUnit}
-                  className="bg-blue-600 dark:bg-blue-700 text-white px-6 py-3 rounded-2xl text-sm font-bold flex items-center gap-2 hover:bg-blue-700 dark:hover:bg-blue-600 shadow-lg transition-all active:scale-95"
+                  className="bg-blue-600 dark:bg-blue-700 text-white px-5 py-2.5 rounded-2xl text-sm font-bold flex items-center gap-2 hover:bg-blue-700 dark:hover:bg-blue-600 shadow-lg transition-all active:scale-95 shrink-0"
                 >
-                  <Plus size={18} /> Añadir Equipo
+                  <Plus size={16} /> Añadir Equipo
                 </button>
               </div>
 
-              <div className="space-y-5">
+              <div className="space-y-4">
                 {units.map((unit, idx) => (
                   <div
                     key={unit.id}
-                    className="group relative bg-slate-50 dark:bg-[#1a1d25] hover:bg-white dark:hover:bg-[#161b22] hover:shadow-lg transition-all rounded-3xl p-6 border border-slate-200 dark:border-white/[0.08] flex flex-col md:flex-row items-center gap-6 overflow-hidden"
+                    className="group relative bg-slate-50 dark:bg-[#1a1d25] hover:bg-white dark:hover:bg-[#161b22] hover:shadow-lg transition-all rounded-3xl p-5 sm:p-6 border border-slate-200 dark:border-white/[0.08] flex flex-col sm:flex-row items-stretch gap-4 overflow-hidden"
                   >
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-6 flex-1 w-full relative z-10">
-                      <div className="space-y-2">
+                    {/* Tres campos: Capacidad · Tecnología · Horas */}
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 flex-1 w-full relative z-10">
+
+                      <div className="space-y-1.5">
                         <label className="text-[10px] font-bold text-slate-400 dark:text-[#a0a4ad] uppercase tracking-widest ml-1">Capacidad</label>
-                        <select
-                          value={unit.btu}
-                          onChange={(e) => updateUnit(unit.id, 'btu', parseInt(e.target.value))}
-                          className="w-full p-3 bg-white dark:bg-[#0f1215] border border-slate-200 dark:border-white/[0.08] rounded-2xl text-sm font-bold text-gray-900 dark:text-[#e8eaed] focus:ring-2 focus:ring-blue-500 outline-none shadow-sm"
-                        >
-                          {BTU_OPTIONS.map(btu => <option key={btu} value={btu}>{btu.toLocaleString()} BTU</option>)}
-                        </select>
+                        <div className="relative">
+                          <select
+                            value={unit.btu}
+                            onChange={(e) => updateUnit(unit.id, 'btu', parseInt(e.target.value))}
+                            className="w-full p-3 pl-4 pr-9 bg-white dark:bg-[#0f1215] border border-slate-200 dark:border-white/[0.08] rounded-2xl text-sm font-bold text-gray-900 dark:text-[#e8eaed] focus:ring-2 focus:ring-blue-500 outline-none shadow-sm appearance-none cursor-pointer hover:border-blue-300 dark:hover:border-blue-700 transition-colors"
+                          >
+                            {BTU_OPTIONS.map(btu => <option key={btu} value={btu}>{btu.toLocaleString()} BTU</option>)}
+                          </select>
+                          <ChevronDown size={14} className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 dark:text-[#a0a4ad] pointer-events-none" />
+                        </div>
                       </div>
-                      <div className="space-y-2">
+
+                      <div className="space-y-1.5">
                         <label className="text-[10px] font-bold text-slate-400 dark:text-[#a0a4ad] uppercase tracking-widest ml-1">Tecnología</label>
-                        <select
-                          value={unit.type}
-                          onChange={(e) => updateUnit(unit.id, 'type', e.target.value)}
-                          className="w-full p-3 bg-white dark:bg-[#0f1215] border border-slate-200 dark:border-white/[0.08] rounded-2xl text-sm font-bold text-gray-900 dark:text-[#e8eaed] focus:ring-2 focus:ring-blue-500 outline-none shadow-sm"
-                        >
-                          {Object.values(ACType).map(t => <option key={t} value={t}>{t}</option>)}
-                        </select>
+                        <div className="relative">
+                          <select
+                            value={unit.type}
+                            onChange={(e) => updateUnit(unit.id, 'type', e.target.value)}
+                            className="w-full p-3 pl-4 pr-9 bg-white dark:bg-[#0f1215] border border-slate-200 dark:border-white/[0.08] rounded-2xl text-sm font-bold text-gray-900 dark:text-[#e8eaed] focus:ring-2 focus:ring-blue-500 outline-none shadow-sm appearance-none cursor-pointer hover:border-blue-300 dark:hover:border-blue-700 transition-colors"
+                          >
+                            {Object.values(ACType).map(t => <option key={t} value={t}>{t}</option>)}
+                          </select>
+                          <ChevronDown size={14} className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 dark:text-[#a0a4ad] pointer-events-none" />
+                        </div>
                       </div>
-                      <div className="space-y-2 col-span-2 md:col-span-1">
-                        <label className="text-[10px] font-bold text-slate-400 dark:text-[#a0a4ad] uppercase tracking-widest ml-1">Horas/Día</label>
+
+                      <div className="space-y-1.5">
+                        <label className="text-[10px] font-bold text-slate-400 dark:text-[#a0a4ad] uppercase tracking-widest ml-1">Horas / Día</label>
                         <input
                           type="number"
                           value={unit.hours}
                           onChange={(e) => updateUnit(unit.id, 'hours', parseFloat(e.target.value) || 0)}
-                          className="w-full p-3 bg-white dark:bg-[#0f1215] border border-slate-200 dark:border-white/[0.08] rounded-2xl text-sm font-bold text-gray-900 dark:text-[#e8eaed] focus:ring-2 focus:ring-blue-500 outline-none shadow-sm"
+                          className="w-full p-3 bg-white dark:bg-[#0f1215] border border-slate-200 dark:border-white/[0.08] rounded-2xl text-sm font-bold text-gray-900 dark:text-[#e8eaed] focus:ring-2 focus:ring-blue-500 outline-none shadow-sm hover:border-blue-300 dark:hover:border-blue-700 transition-colors"
                         />
                       </div>
                     </div>
 
-                    <div className="flex items-center gap-8 bg-white dark:bg-[#0f1215] px-7 py-4 rounded-3xl border border-slate-100 dark:border-white/[0.08] shadow-sm w-full md:w-auto relative z-10">
+                    {/* Resultado: Paneles + eliminar */}
+                    <div className="flex sm:flex-col items-center justify-between sm:justify-center gap-3 bg-white dark:bg-[#0f1215] px-5 py-4 rounded-2xl border border-slate-100 dark:border-white/[0.08] shadow-sm shrink-0 sm:w-28 relative z-10">
                       <div className="text-center">
-                        <p className="text-[10px] text-slate-400 dark:text-[#a0a4ad] font-bold uppercase mb-1">Paneles</p>
-                        <p className="text-2xl font-black text-blue-600 dark:text-blue-400 leading-none">{totals.breakdown[idx]?.panelsRequired}</p>
-                      </div>
-                      <div className="w-px h-10 bg-slate-100 dark:bg-white/[0.08]" />
-                      <div className="text-center">
-                        <p className="text-[10px] text-slate-400 dark:text-[#a0a4ad] font-bold uppercase mb-1">Costo</p>
-                        <p className="text-2xl font-black text-slate-800 dark:text-[#e8eaed] leading-none">${totals.breakdown[idx]?.monthlyCost.toFixed(0)}</p>
+                        <p className="text-[10px] text-slate-400 dark:text-[#a0a4ad] font-bold uppercase mb-1 tracking-wider">Paneles</p>
+                        <p className="text-3xl font-black text-blue-600 dark:text-blue-400 leading-none">{totals.breakdown[idx]?.panelsRequired}</p>
                       </div>
                       <button
                         onClick={() => removeUnit(unit.id)}
-                        className="ml-2 p-3 text-slate-300 dark:text-white/20 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-2xl transition-all"
+                        className="p-2.5 text-slate-300 dark:text-white/20 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-xl transition-all"
                       >
-                        <Trash2 size={22} />
+                        <Trash2 size={20} />
                       </button>
                     </div>
                   </div>
@@ -565,9 +571,9 @@ export default function App() {
       </main>
 
       <footer className="max-w-6xl mx-auto px-4 mt-16 text-center pb-12">
-        <p className="font-bold text-slate-800 dark:text-[#e8eaed] text-lg uppercase">Juan S Rivera</p>
-        <p className="text-blue-600 dark:text-blue-400 text-xs font-bold uppercase tracking-widest mb-1">Consultor Energético Senior</p>
-        <p className="text-slate-400 dark:text-[#a0a4ad] text-[10px] font-medium">Windmar Home | Puerto Rico</p>
+        <p className="font-bold text-slate-800 dark:text-[#e8eaed] text-base uppercase tracking-wide">Equipo de Análisis y Desarrollo</p>
+        <p className="text-blue-600 dark:text-blue-400 text-xs font-bold uppercase tracking-widest mb-1">Call Center · Windmar Home</p>
+        <p className="text-slate-400 dark:text-[#a0a4ad] text-[10px] font-medium">Puerto Rico</p>
       </footer>
 
       <style>{`
