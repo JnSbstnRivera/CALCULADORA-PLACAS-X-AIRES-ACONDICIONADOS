@@ -424,11 +424,11 @@ export default function App() {
                 {units.map((unit, idx) => (
                   <div
                     key={unit.id}
-                    className="group relative bg-slate-50 dark:bg-[#1a1d25] hover:bg-white dark:hover:bg-[#161b22] hover:shadow-lg transition-all rounded-3xl p-5 sm:p-6 border border-slate-200 dark:border-white/[0.08] flex flex-col sm:flex-row items-stretch gap-4 overflow-hidden"
+                    className="group relative bg-slate-50 dark:bg-[#1a1d25] hover:bg-white dark:hover:bg-[#161b22] hover:shadow-lg transition-all rounded-3xl p-5 sm:p-6 border border-slate-200 dark:border-white/[0.08] overflow-hidden"
                   >
-                    {/* Tres campos: Capacidad · Tecnología · Horas */}
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 flex-1 w-full relative z-10">
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 relative z-10">
 
+                      {/* Capacidad */}
                       <div className="space-y-1.5">
                         <label className="text-[10px] font-bold text-slate-400 dark:text-[#a0a4ad] uppercase tracking-widest ml-1">Capacidad</label>
                         <div className="relative">
@@ -443,6 +443,7 @@ export default function App() {
                         </div>
                       </div>
 
+                      {/* Tecnología */}
                       <div className="space-y-1.5">
                         <label className="text-[10px] font-bold text-slate-400 dark:text-[#a0a4ad] uppercase tracking-widest ml-1">Tecnología</label>
                         <div className="relative">
@@ -457,6 +458,7 @@ export default function App() {
                         </div>
                       </div>
 
+                      {/* Horas / Día */}
                       <div className="space-y-1.5">
                         <label className="text-[10px] font-bold text-slate-400 dark:text-[#a0a4ad] uppercase tracking-widest ml-1">Horas / Día</label>
                         <input
@@ -466,20 +468,21 @@ export default function App() {
                           className="w-full p-3 bg-white dark:bg-[#0f1215] border border-slate-200 dark:border-white/[0.08] rounded-2xl text-sm font-bold text-gray-900 dark:text-[#e8eaed] focus:ring-2 focus:ring-blue-500 outline-none shadow-sm hover:border-blue-300 dark:hover:border-blue-700 transition-colors"
                         />
                       </div>
-                    </div>
 
-                    {/* Resultado: Paneles + eliminar */}
-                    <div className="flex sm:flex-col items-center justify-between sm:justify-center gap-3 bg-white dark:bg-[#0f1215] px-5 py-4 rounded-2xl border border-slate-100 dark:border-white/[0.08] shadow-sm shrink-0 sm:w-28 relative z-10">
-                      <div className="text-center">
-                        <p className="text-[10px] text-slate-400 dark:text-[#a0a4ad] font-bold uppercase mb-1 tracking-wider">Paneles</p>
-                        <p className="text-3xl font-black text-blue-600 dark:text-blue-400 leading-none">{totals.breakdown[idx]?.panelsRequired}</p>
+                      {/* Paneles — misma altura, label fuera, trash dentro */}
+                      <div className="space-y-1.5">
+                        <label className="text-[10px] font-bold text-slate-400 dark:text-[#a0a4ad] uppercase tracking-widest ml-1">Paneles</label>
+                        <div className="relative w-full p-3 bg-white dark:bg-[#0f1215] border border-slate-200 dark:border-white/[0.08] rounded-2xl shadow-sm flex items-center justify-center">
+                          <span className="text-xl font-black text-blue-600 dark:text-blue-400 leading-none">{totals.breakdown[idx]?.panelsRequired}</span>
+                          <button
+                            onClick={() => removeUnit(unit.id)}
+                            className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 text-slate-300 dark:text-white/20 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-all"
+                          >
+                            <Trash2 size={14} />
+                          </button>
+                        </div>
                       </div>
-                      <button
-                        onClick={() => removeUnit(unit.id)}
-                        className="p-2.5 text-slate-300 dark:text-white/20 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-xl transition-all"
-                      >
-                        <Trash2 size={20} />
-                      </button>
+
                     </div>
                   </div>
                 ))}
