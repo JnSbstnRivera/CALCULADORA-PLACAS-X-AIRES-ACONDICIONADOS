@@ -86,7 +86,7 @@ const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
         transition={{ delay: 0.35, duration: 0.5 }}
         className="text-center px-6"
       >
-        <h1 className="text-3xl font-black tracking-tighter text-white mb-2">¿Cuántas placas para mis aires? ❄️</h1>
+        <h1 className="text-xl sm:text-3xl font-black tracking-tighter text-white mb-2">¿Cuántas placas para mis aires? ❄️</h1>
         <motion.div
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
@@ -232,12 +232,12 @@ export default function App() {
       </AnimatePresence>
 
       <header className="bg-gradient-to-r from-blue-800 to-blue-600 dark:from-[#0d1f3c] dark:to-[#0a1730] text-white shadow-xl relative overflow-hidden">
-        <div className="max-w-6xl mx-auto px-4 py-8 relative z-10">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+        <div className="max-w-6xl mx-auto px-4 py-3 sm:py-6 relative z-10">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-3 sm:gap-6">
 
             {/* Logo + título */}
-            <div className="flex items-center gap-4">
-              <div className="p-1 flex items-center justify-center w-24 h-24 sm:w-28 sm:h-28 overflow-hidden transition-all duration-300 hover:scale-105">
+            <div className="flex items-center gap-3">
+              <div className="p-1 flex items-center justify-center w-14 h-14 sm:w-20 sm:h-20 overflow-hidden transition-all duration-300 hover:scale-105 shrink-0">
                 <img
                   src="https://i.postimg.cc/6T5J2v2G/6T5J2v2G.png"
                   alt="Windmar Home Logo"
@@ -246,13 +246,13 @@ export default function App() {
                 />
               </div>
               <div>
-                <h1 className="text-2xl font-black tracking-tight leading-none mb-1">Calculadora de Placas para Aires ❄️</h1>
-                <p className="text-blue-100 text-xs font-semibold uppercase tracking-widest opacity-80">Windmar Home | Puerto Rico</p>
+                <h1 className="text-base sm:text-2xl font-black tracking-tight leading-none mb-1">Calculadora de Placas para Aires ❄️</h1>
+                <p className="text-blue-100 text-[10px] sm:text-xs font-semibold uppercase tracking-widest opacity-80">Windmar Home | Puerto Rico</p>
               </div>
             </div>
 
             {/* Lado derecho: toggle encima, ciudad+clima abajo */}
-            <div className="flex flex-col items-end gap-3 w-full md:w-auto">
+            <div className="flex flex-col items-start md:items-end gap-2 sm:gap-3 w-full md:w-auto">
 
               {/* Theme Toggle — réplica exacta del Panel #8 */}
               <div className="flex items-center gap-2 bg-black/20 dark:bg-wh-navy/60 backdrop-blur-md p-1 pr-3 rounded-full border border-white/15 dark:border-wh-navy/50 shadow-sm self-end">
@@ -277,8 +277,8 @@ export default function App() {
               </div>
 
               {/* Ciudad + Clima */}
-              <div className="flex flex-col sm:flex-row items-center gap-3 w-full md:w-auto">
-                <div className="relative w-full sm:w-48">
+              <div className="flex flex-row flex-wrap items-center gap-2 w-full md:w-auto">
+                <div className="relative w-full sm:w-44 min-w-[140px]">
                   <MapPin size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-blue-200 z-10" />
                   <select
                     onChange={handleCityChange}
@@ -291,7 +291,7 @@ export default function App() {
                 </div>
 
                 {weather && (
-                  <div className="flex items-center gap-4 bg-white/10 px-5 py-2.5 rounded-xl border border-white/10 backdrop-blur-sm w-full sm:w-auto justify-center sm:justify-start">
+                  <div className="flex items-center gap-2 sm:gap-4 bg-white/10 px-3 sm:px-5 py-2 sm:py-2.5 rounded-xl border border-white/10 backdrop-blur-sm w-auto justify-start">
                     <div className="flex items-center gap-2">
                       <WeatherIcon />
                       <div className="leading-tight">
@@ -313,7 +313,7 @@ export default function App() {
         <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl" />
       </header>
 
-      <main className="max-w-6xl mx-auto px-4 -mt-8 relative z-20">
+      <main className="max-w-6xl mx-auto px-4 -mt-4 sm:-mt-8 relative z-20">
         <div className="flex justify-end mb-4">
           <button
             onClick={() => setShowConfig(!showConfig)}
@@ -400,14 +400,14 @@ export default function App() {
           />
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8">
+        <div className="grid lg:grid-cols-3 gap-4 sm:gap-8">
           <div className="lg:col-span-2 space-y-6">
 
             {/* Unidades de aire */}
-            <div className="bg-white dark:bg-[#161b22] rounded-3xl shadow-sm border border-slate-100 dark:border-white/[0.08] p-8">
+            <div className="bg-white dark:bg-[#161b22] rounded-3xl shadow-sm border border-slate-100 dark:border-white/[0.08] p-4 sm:p-8">
               <div className="flex flex-wrap justify-between items-center gap-4 mb-6">
                 <div>
-                  <h2 className="text-xl font-bold text-slate-800 dark:text-[#e8eaed]">Unidades de Aire</h2>
+                  <h2 className="text-lg sm:text-xl font-bold text-slate-800 dark:text-[#e8eaed]">Unidades de Aire</h2>
                   <p className="text-xs text-slate-400 dark:text-[#a0a4ad] font-medium">Inventario de equipos</p>
                 </div>
                 <button
@@ -488,8 +488,8 @@ export default function App() {
             </div>
 
             {/* Costo de No Tener Sol */}
-            <div className="bg-amber-50 dark:bg-[#1c1409] rounded-3xl p-8 border border-amber-200 dark:border-amber-900/30 relative overflow-hidden">
-              <h4 className="font-bold text-amber-900 dark:text-amber-300 mb-4 flex items-center gap-3 text-xl relative z-10">
+            <div className="bg-amber-50 dark:bg-[#1c1409] rounded-3xl p-4 sm:p-8 border border-amber-200 dark:border-amber-900/30 relative overflow-hidden">
+              <h4 className="font-bold text-amber-900 dark:text-amber-300 mb-4 flex items-center gap-3 text-base sm:text-xl relative z-10">
                 <DollarSign className="text-amber-500" size={24} />
                 El Costo de No Tener Sol
               </h4>
@@ -516,9 +516,9 @@ export default function App() {
 
           <div className="space-y-6">
             {/* Gráfica */}
-            <div className="bg-white dark:bg-[#161b22] rounded-3xl shadow-sm border border-slate-100 dark:border-white/[0.08] p-8">
+            <div className="bg-white dark:bg-[#161b22] rounded-3xl shadow-sm border border-slate-100 dark:border-white/[0.08] p-4 sm:p-8">
               <div className="mb-6">
-                <h3 className="font-bold text-slate-800 dark:text-[#e8eaed] text-lg">Mix de Consumo</h3>
+                <h3 className="font-bold text-slate-800 dark:text-[#e8eaed] text-base sm:text-lg">Mix de Consumo</h3>
                 <p className="text-xs text-slate-400 dark:text-[#a0a4ad] font-medium tracking-tight">Carga por unidad</p>
               </div>
               <div className="h-64">
@@ -548,8 +548,8 @@ export default function App() {
             </div>
 
             {/* Puntos de Cierre */}
-            <div className="bg-blue-900 dark:bg-[#0d1f3c] rounded-3xl p-8 text-white shadow-xl relative overflow-hidden group">
-              <h3 className="font-bold text-xl mb-6 flex items-center gap-3">
+            <div className="bg-blue-900 dark:bg-[#0d1f3c] rounded-3xl p-4 sm:p-8 text-white shadow-xl relative overflow-hidden group">
+              <h3 className="font-bold text-base sm:text-xl mb-6 flex items-center gap-3">
                 <Sparkles size={18} className="text-blue-400" />
                 Puntos de Cierre
               </h3>
@@ -571,7 +571,7 @@ export default function App() {
         </div>
       </main>
 
-      <footer className="max-w-6xl mx-auto px-4 mt-16 pb-4">
+      <footer className="max-w-6xl mx-auto px-4 mt-8 sm:mt-16 pb-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-8 border-t border-slate-200 dark:border-white/[0.08]">
           <div className="flex gap-4">
             <div className="bg-orange-400/10 p-3 rounded-xl h-fit">
