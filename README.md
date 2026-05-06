@@ -1,20 +1,62 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# CALCULADORA DE PLACAS PARA AIRES ACONDICIONADOS
 
-# Run and deploy your AI Studio app
+Calculadora de paneles solares optimizada para sistemas de aire acondicionado de **Windmar Home Puerto Rico**.
 
-This contains everything you need to run your app locally.
+---
 
-View your app in AI Studio: https://ai.studio/apps/162b291d-9619-431e-8b38-292c0d64bfb7
+## ¿Qué hace?
 
-## Run Locally
+El asesor ingresa los equipos de A/C del cliente (BTU, cantidad, horas de uso) y la herramienta calcula el número exacto de paneles solares necesarios para cubrir su carga de climatización. Calibrada con los promedios de Puerto Rico (4.5 HSP, paneles 410 W).
 
-**Prerequisites:**  Node.js
+---
 
+## Características
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+- Calculadora de carga por BTU y eficiencia SEER
+- Soporte para múltiples unidades de A/C (mini-split, central, window)
+- Cálculo de kWh/día → paneles solares necesarios
+- Recomendación de batería de respaldo
+- Análisis IA contextual (Gemini)
+- Gráficas de consumo (Recharts)
+- Dark / Light mode
+
+---
+
+## Stack Técnico
+
+| Capa | Tecnología |
+|---|---|
+| Frontend | React 19 + TypeScript + Vite + Tailwind CSS 4 |
+| IA | Google Gemini (@google/genai) |
+| Gráficas | Recharts |
+| Animaciones | Motion (Framer Motion) |
+| Iconos | Lucide React |
+| Fuentes | Poppins |
+
+---
+
+## Variables de entorno
+
+```
+GEMINI_API_KEY=
+```
+
+---
+
+## Instalación local
+
+```bash
+npm install
+npm run dev
+# http://localhost:5173
+```
+
+---
+
+## Despliegue
+
+**Producción:** https://calculadora-placas-aires-acondicion.vercel.app
+
+---
+
+*Desarrollado para Windmar Home Puerto Rico — Call Center Operations*
